@@ -4,7 +4,12 @@ import matplotlib.pylab as plt
 import seaborn as sns
 
 ## Import Dataset
+<<<<<<< HEAD
 data_df = pd.read_csv("cereal.csv")
+=======
+str_name = input("Enter your name file ? " )
+data_df = pd.read_csv(str_name)
+>>>>>>> f186e2cd08f1f4e0874b9b5cd311405c59b72f5e
 
 ## Data Imputation (Missing Data Replacement)
 for col in data_df.columns :
