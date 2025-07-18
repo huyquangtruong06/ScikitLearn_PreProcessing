@@ -1,78 +1,76 @@
-# 🥣 Cereal Dataset Preprocessing with Scikit-Learn 🧑‍🔬
+# 🥣 Cereal Data Preprocessing with Scikit-Learn
 
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
-![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.0%2B-orange)
-![Pandas](https://img.shields.io/badge/Pandas-1.3%2B-brightgreen)
+📂 This project demonstrates how to perform essential preprocessing steps on a **cereal dataset** using Python and Scikit-Learn.
 
-This project demonstrates a complete data preprocessing pipeline for the cereal dataset using Scikit-Learn's preprocessing tools.
+## 📊 Dataset Description
 
-## 📊 Dataset Overview
-- **Source**: `cereal.csv`
-- **Records**: 77 cereals
-- **Features**: 16 attributes including nutritional information and ratings
-- **Target Variable**: `rating` (continuous)
+- Source file: `cereal.csv`
+- Contains information about 77 types of cereals and their nutritional values.
+- Key columns:
+  - `name`, `mfr`, `type`: cereal name and manufacturer/type
+  - `calories`, `protein`, `fat`, `sodium`, ...: nutritional attributes
+  - `rating`: popularity rating (float)
 
-## 🛠️ Preprocessing Steps
+---
 
-### 1. 🔍 Data Inspection
+## 🧠 What This Project Covers
+
+### 🔹 Step 1: Import Libraries & Dataset
 ```python
-# Check missing data
-for col in data_df.columns:
-    missing_data = data_df[col].isna().sum()
-    missing_percent = missing_data/len(data_df)*100
-    print(f"Column: {col} has {missing_percent}% missing data")
-2. 🧩 Missing Data Imputation
-Used SimpleImputer with strategy="mean"
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 
-Visualized missing data with Seaborn heatmap
-https://heatmap.png
+### 🔹 Step 2: Handle Missing Values
+Print percentage of missing values in each column.
 
-3. 🔠 Categorical Data Encoding
-Independent Variables (X):
+Visualize missing data with a heatmap.
 
-One-Hot Encoding for name column
+Replace missing numerical values using mean imputation.
 
-ColumnTransformer used to preserve other columns
+📌 Used: SimpleImputer(strategy='mean')
 
-Dependent Variable (y):
+### 🔹 Step 3: Encode Categorical Data
+OneHotEncoder for independent variable (x)
 
-Label Encoding for target variable
+LabelEncoder for dependent variable (y)
 
-4. ✂️ Train-Test Split
-80% training, 20% test
+📌 Used:
+- from sklearn.compose import ColumnTransformer
+- from sklearn.preprocessing import OneHotEncoder, LabelEncoder
 
-Random seed set for reproducibility
-5. ⚖️ Feature Scaling
-Standardized numerical features using StandardScaler
+### 🔹 Step 4: Split Data
+80% training, 20% testing
+📌 Used:
+- from sklearn.model_selection import train_test_split
 
-Applied only to numerical columns (columns after one-hot encoded features)
+### 🔹 Step 5: Feature Scaling
+Apply StandardScaler only to numerical columns (excluding encoded ones).
+📌 Used:
+- from sklearn.preprocessing import StandardScaler
 
-🧮 Technical Stack
-🐍 Python 3.8+
+📈 Output Example
+x_test after preprocessing is printed at the end.
 
-📊 Pandas for data manipulation
+📎 Files Included
+ScikitLearn_PreProcessing.py – Main Python script
 
-📈 Matplotlib/Seaborn for visualization
+cereal.csv – Raw cereal dataset
 
-🤖 Scikit-Learn for:
+README.md – You’re reading it 😄
 
-SimpleImputer - Missing value handling
+🚀 How to Run
+- python ScikitLearn_PreProcessing.py
 
-OneHotEncoder - Categorical encoding
+📌 Notes
+Handles missing values robustly.
 
-LabelEncoder - Target variable encoding
+Demonstrates full preprocessing pipeline, suitable for feeding into ML models.
 
-StandardScaler - Feature scaling
-📝 Key Observations
-🚫 No missing data found in this dataset
+You can extend this to build classifiers/regressors for predicting cereal ratings or categories.
 
-🏷️ Categorical features needed proper encoding
+✨ Credits
+Developed with ❤️ using Python and Scikit-Learn.
+Dataset originally sourced from Cereal Dataset - UCI Repository.
 
-🔢 Numerical features required scaling for many ML algorithms
-
-📈 Next Steps
-Try different preprocessing strategies
-
-Experiment with various ML models
-
-Perform feature selection/engineering
