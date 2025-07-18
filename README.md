@@ -16,11 +16,10 @@
 ## 🧠 What This Project Covers
 
 ### 🔹 Step 1: Import Libraries & Dataset
-```python
-import pandas as pd
-import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
+- import pandas as pd
+- import numpy as np
+- import seaborn as sns
+- import matplotlib.pyplot as plt
 
 ### 🔹 Step 2: Handle Missing Values
 Print percentage of missing values in each column.
